@@ -12,9 +12,8 @@ Repositório de referência com exemplos e configuração completa para testes u
 
 ## ⚙️ Pré-requisitos
 
-* Node.js (versao do projeto)
-* npm ou yarn
-* React Native CLI ou Expo
+* Node.js 18
+* react 18.2.0
 
 ---
 
@@ -31,12 +30,13 @@ npm install --save-dev jest @testing-library/react-native @testing-library/jest-
 
 ```
 react-native-testing-reference/
-├── src/
-│   ├── components/
-│   │   └── Button.tsx
-│   └── __tests__/
-│       └── components/
-│           └── Button.test.tsx
+src/
+└── components/
+    └── Button/
+        ├── index.js        (ou Button.js)
+        ├── Button.test.js  (O teste do componente)
+        ├── Button.css      (Os estilos do componente)
+        └── types.ts        (Tipos TypeScript, se aplicável)
 ├── babel.config.js
 ├── jest.setup.ts
 ├── jest.config.js
