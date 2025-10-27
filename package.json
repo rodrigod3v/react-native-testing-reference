@@ -12,6 +12,9 @@
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "test:staged": "npm test -- --findRelatedTests",
+    "test": "jest --verbose --colors --coverage",
+    "test:watch": "jest --watch",
+    "test:dev": "jest --verbose --colors --watchAll",
     "prepare": "husky install",
     "build:ios": "npx expo prebuild --platform ios && npx expo run:ios",
     "build:android": "npx expo prebuild --platform android && npx expo run:android"
@@ -139,10 +142,36 @@
       "pre-commit": "npx lint-stage"
     }
   },
-  "lint-staged": {
-    "*.{js, jsx, ts, tsx}": [
-      "prettier --white",
-      "eslint --fix"
-    ]
+"jest": {
+    "preset": "react-native",
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect",
+      "<rootDir>/jest.setup.ts"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native|@react-navigation|react-native-version-check|expo-.*|@expo/.*|toastify-react-native)/)"
+    ],
+    "moduleFileExtensions": [
+      "node",
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "^@commons/(.*)$": "<rootDir>/src/commons/$1",
+      "^@screens/(.*)$": "<rootDir>/src/screens/$1",
+      "^@routes/(.*)$": "<rootDir>/src/routes/$1",
+      "^@services/(.*)$": "<rootDir>/src/services/$1",
+      "^@modules/(.*)$": "<rootDir>/src/modules/$1",
+      "^@theme/(.*)$": "<rootDir>/src/theme/$1",
+      "^@lib/(.*)$": "<rootDir>/src/lib/$1",
+      "victory-native": "victory"
+    }
   }
 }
