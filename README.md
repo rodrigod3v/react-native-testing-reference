@@ -77,27 +77,6 @@ module.exports = function (api) {
 
 ---
 
-## ⚙️ jest.config.js
-
-```js
-module.exports = {
-  preset: 'jest-expo',
-  testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  transformIgnorePatterns: [
-    'node_modules/(?!(@react-native|react-native|react-navigation|@react-navigation)/)'
-  ],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  moduleNameMapper: {
-    '^@components/(.*)$': '<rootDir>/src/components/$1',
-    '^@tests/(.*)$': '<rootDir>/src/__tests__/$1'
-  },
-  verbose: true
-}
-```
-
----
-
 ## 🧪 jest.setup.ts
 
 ```ts
