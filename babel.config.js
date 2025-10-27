@@ -1,8 +1,20 @@
 module.exports = function (api) {
-  api.cache(true)
+  api.cache(true);
+
   return {
-    presets: ['babel-preset-expo'],
+    presets: ['babel-preset-expo'], // ou ['module:metro-react-native-babel-preset'] para RN puro
     plugins: [
+      [
+        'module:react-native-dotenv',
+        {
+          moduleName: '@env',
+          path: '.env',
+          blacklist: null,
+          whitelist: null,
+          safe: false,
+          allowUndefined: true,
+        },
+      ],
       [
         'module-resolver',
         {
@@ -14,18 +26,9 @@ module.exports = function (api) {
             '@services': './src/services',
             '@modules': './src/modules',
             '@theme': './src/theme',
-            '@lib': './src/lib',
           },
         },
       ],
-      [
-        'module:react-native-dotenv',
-        {
-          moduleName: '@env',
-          allowUndefined: false,
-        },
-      ],
-      'react-native-reanimated/plugin',
     ],
-  }
-}
+  };
+};
